@@ -19,6 +19,9 @@ require('packer').startup(function(use)
 
   use 'folke/tokyonight.nvim'
 
+  use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
+  use {'junegunn/fzf.vim'}
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }

@@ -6,6 +6,9 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 fisher install PatrickF1/fzf.fish
 
+# set FZF_DEFAULT_COMMAND
+set -U -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git -f -g \"\""
+
 # install tide command line prompt
 fisher install IlanCosman/tide@v5
 tide configure

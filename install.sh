@@ -55,6 +55,12 @@ elif [ $platform == "mac" ]; then
     brew install tmux
 fi
 
+if [ $platform == "linux" ]; then
+    sudo apt -y install silversearcher-ag
+elif [ $platform == "mac" ]; then
+    brew install the_silver_searcher
+fi
+
 # run fish installation script
 fish install.fish
 
