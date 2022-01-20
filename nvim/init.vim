@@ -54,3 +54,6 @@ nnoremap <leader>, :nohl<CR>
 nnoremap <c-p> :Files<cr>
 nnoremap <c-b> :Buffers<cr>
 nnoremap <c-g> :GFiles?<cr>
+
+" toggle between header/source
+nnoremap <leader>o :ClangdSwitchSourceHeader<cr>
