@@ -53,4 +53,4 @@ nnoremap <leader>, :nohl<CR>
 " fzf bindings
 nnoremap <c-p> :Files<cr>
 nnoremap <c-b> :Buffers<cr>
-
+nnoremap <c-g> :GFiles?<cr>

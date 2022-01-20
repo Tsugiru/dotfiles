@@ -30,6 +30,13 @@ end
 
 local M = {}
 M.setup = function()
+  vim.diagnostic.config({
+    virtual_text = false,
+    underline = true
+  })
+  vim.o.updatetime = 250
+  vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+
   local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
   local servers = { 'clangd' }
   for _, lsp in ipairs(servers) do
