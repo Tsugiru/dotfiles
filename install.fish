@@ -4,6 +4,14 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 # clone and install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
+switch (uname)
+  case Linux
+    sudo apt -y install fd-find
+    sudo apt -y install bat
+  case Darwin
+    brew install fd
+    brew install bat
+end
 fisher install PatrickF1/fzf.fish
 
 # set FZF_DEFAULT_COMMAND
