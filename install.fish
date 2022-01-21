@@ -1,14 +1,17 @@
 # install fisher, the fish package manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
-# clone and install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-~/.fzf/install
+# install fzf
 switch (uname)
   case Linux
+    sudo apt -y install fzf
     sudo apt -y install fd-find
     sudo apt -y install bat
+    mkdir -p ~/.local/bin
+    ln -s $(which fdfind) ~/.local/bin/fd
+    ln -s /usr/bin/batcat ~/.local/bin/bat
   case Darwin
+    brew install fzf
     brew install fd
     brew install bat
 end

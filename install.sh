@@ -53,6 +53,7 @@ elif [ $platform == "mac" ]; then
     brew install tmux
 fi
 
+# install ag
 if [ $platform == "linux" ]; then
     sudo apt -y install silversearcher-ag
 elif [ $platform == "mac" ]; then
