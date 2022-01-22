@@ -51,9 +51,9 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 nnoremap <leader>, :nohl<CR>
 
 " fzf bindings
-nnoremap <c-p> :Files<cr>
-nnoremap <c-b> :Buffers<cr>
-nnoremap <c-g> :GFiles?<cr>
+nnoremap <leader>p :Files<cr>
+nnoremap <leader>b :Buffers<cr>
+nnoremap <leader>g :GFiles?<cr>
 
 " toggle between header/source
 nnoremap <leader>o :ClangdSwitchSourceHeader<cr>
