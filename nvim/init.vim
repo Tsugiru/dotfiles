@@ -12,6 +12,8 @@ let g:tokyonight_style = "night"
 colorscheme tokyonight
 set cursorline
 set pumheight=10
+set autoread
+autocmd FocusGained * checktime
 
 """"" line numbers """""
 set relativenumber

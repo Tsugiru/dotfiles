@@ -27,6 +27,8 @@ require('packer').startup(function(use)
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
+  use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
     require('packer').sync()
@@ -39,3 +41,4 @@ require('lualine').setup {
   }
 }
 require("plugins.lspconfig").setup()
+require("plugins.diffviewconfig").setup()

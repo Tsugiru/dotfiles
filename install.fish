@@ -46,6 +46,7 @@ mkdir -p ~/.config/nvim/lua/plugins
 ln -s ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
 ln -s ~/dotfiles/nvim/lua/plugins/init.lua ~/.config/nvim/lua/plugins/init.lua
 ln -s ~/dotfiles/nvim/lua/plugins/lspconfig.lua ~/.config/nvim/lua/plugins/lspconfig.lua
+ln -s ~/dotfiles/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/diffviewconfig.lua
 
 # symlink fish config files
 set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
