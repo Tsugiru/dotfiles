@@ -59,3 +59,7 @@ nnoremap <leader>g :GFiles?<cr>
 
 " toggle between header/source
 nnoremap <leader>o :ClangdSwitchSourceHeader<cr>
+
+" open/close DiffView
+nnoremap <leader>do :DiffviewOpen<cr>
+nnoremap <leader>dc :DiffviewClose<cr>
