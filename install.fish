@@ -1,6 +1,24 @@
 # install fisher, the fish package manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
+# install neovim and clangd
+switch (uname)
+  case Linux
+    sudo apt -y install neovim
+    sudo apt -y install clangd-12
+  case Darwin
+    brew install neovim
+    brew install llvm
+end
+
+# install ag
+switch (uname)
+  case Linux
+    sudo apt -y install silversearcher-ag
+  case Darwin
+    brew install the_silver_searcher
+end
+
 # install fzf
 switch (uname)
   case Linux
@@ -17,8 +35,9 @@ switch (uname)
 end
 fisher install PatrickF1/fzf.fish
 
-# set FZF_DEFAULT_COMMAND
+# set FZF_DEFAULT_COMMAND and show hidden files on ctrl + alt + f
 set -U -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git -f -g \"\""
+set -U -x fzf_fd_opts --hidden --exclude=.git
 
 # install tide command line prompt
 fisher install IlanCosman/tide@v5
@@ -32,6 +51,7 @@ git clone https://github.com/ryanoasis/nerd-fonts
 cd nerd-fonts
 ./install.sh FiraCode
 cd ..
+rm -rf nerd-fonts
 
 # symlink alacritty config
 switch (uname)
@@ -49,8 +69,8 @@ ln -s ~/dotfiles/nvim/lua/plugins/lspconfig.lua ~/.config/nvim/lua/plugins/lspco
 ln -s ~/dotfiles/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/diffviewconfig.lua
 
 # symlink fish config files
-set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
 mkdir ~/.config/fish/functions/user_functions
+set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
 ln -s ~/dotfiles/fish/colors ~/.config/fish/colors
 ln -s ~/dotfiles/fish/user_functions ~/.config/fish/functions/user_functions
 

@@ -20,6 +20,11 @@ if [ $platform == "linux" ]; then
 elif [ $platform == "mac" ]; then
     brew install --cask alacritty
 fi
+git clone https://github.com/alacritty/alacritty.git
+cd alacritty
+sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
+cd ..
+rm -rf alacritty
 
 # install fish
 if [ $platform == "linux" ]; then
@@ -29,15 +34,6 @@ if [ $platform == "linux" ]; then
     sudo apt -y install fish
 elif [ $platform == "mac" ]; then
     brew install fish
-fi
-
-# install neovim and clangd
-if [ $platform == "linux" ]; then
-    sudo apt -y install neovim
-    sudo apt -y install clangd-12
-elif [ $platform == "mac" ]; then
-    brew install neovim
-    brew install llvm
 fi
 
 # install tmux
@@ -51,13 +47,6 @@ if [ $platform == "linux" ]; then
     rm -rf tmux/
 elif [ $platform == "mac" ]; then
     brew install tmux
-fi
-
-# install ag
-if [ $platform == "linux" ]; then
-    sudo apt -y install silversearcher-ag
-elif [ $platform == "mac" ]; then
-    brew install the_silver_searcher
 fi
 
 # run fish installation script
