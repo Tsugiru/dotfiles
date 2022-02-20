@@ -9,22 +9,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     platform='mac' 
 fi
 
-# install alacritty
-if [ $platform == "linux" ]; then
-    sudo apt update
-    sudo apt -y install curl
-    curl https://sh.rustup.rs -sSf | sh
-    source $HOME/.cargo/env
-    sudo apt -y install build-essential cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-    cargo install alacritty
-elif [ $platform == "mac" ]; then
-    brew install --cask alacritty
-fi
-git clone https://github.com/alacritty/alacritty.git
-cd alacritty
-sudo tic -xe alacritty,alacritty-direct extra/alacritty.info
-cd ..
-rm -rf alacritty
+# install kitty
+curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
 
 # install fish
 if [ $platform == "linux" ]; then

@@ -1,3 +1,16 @@
+set fish_shell_path_macos /opt/homebrew/bin/fish
+set fish_shell_path_linux /usr/bin/fish
+
+# set default shell to fish
+switch (uname)
+  case Linux
+    echo $fish_shell_path_linux | sudo tee -a /etc/shells
+    chsh -s $fish_shell_path_linux
+  case Darwin
+    echo $fish_shell_path_macos | sudo tee -a /etc/shells
+    chsh -s $fish_shell_path_macos
+end
+
 # install fisher, the fish package manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
@@ -10,6 +23,10 @@ switch (uname)
     brew install neovim
     brew install llvm
 end
+
+# set neovim as default editor
+set -U -x EDITOR nvim
+set -U -x VISUAL nvim
 
 # install ag
 switch (uname)
@@ -53,12 +70,12 @@ cd nerd-fonts
 cd ..
 rm -rf nerd-fonts
 
-# symlink alacritty config
+# symlink kitty config
 switch (uname)
   case Linux
-    ln -s ~/dotfiles/alacritty/.alacritty_linux.yml ~/.alacritty.yml
+    ln -s ~/dotfiles/kitty/kitty_linux.conf ~/.config/kitty/kitty.conf
   case Darwin
-    ln -s ~/dotfiles/alacritty/.alacritty_macos.yml ~/.alacritty.yml
+    ln -s ~/dotfiles/kitty/kitty_macos.conf ~/.config/kitty/kitty.conf
 end
 
 # symlink nvim config files
