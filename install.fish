@@ -56,10 +56,6 @@ fisher install PatrickF1/fzf.fish
 set -U -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git -f -g \"\""
 set -U -x fzf_fd_opts --hidden --exclude=.git
 
-# install tide command line prompt
-fisher install IlanCosman/tide@v5
-tide configure
-
 # install z directory jumping tool
 fisher install jethrokuan/z
 
@@ -88,8 +84,8 @@ ln -s ~/dotfiles/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/
 # symlink fish config files
 mkdir ~/.config/fish/functions/user_functions
 set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
-ln -s ~/dotfiles/fish/colors ~/.config/fish/colors
-ln -s ~/dotfiles/fish/user_functions ~/.config/fish/functions/user_functions
+ln -s ~/dotfiles/fish/colors ~/.config/fish
+ln -s ~/dotfiles/fish/user_functions ~/.config/fish/functions
 
 # symlink tmux config file
 ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
