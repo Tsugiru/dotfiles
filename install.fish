@@ -82,7 +82,6 @@ ln -s ~/dotfiles/nvim/lua/plugins/lspconfig.lua ~/.config/nvim/lua/plugins/lspco
 ln -s ~/dotfiles/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/diffviewconfig.lua
 
 # symlink fish config files
-mkdir ~/.config/fish/functions/user_functions
 set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
 ln -s ~/dotfiles/fish/colors ~/.config/fish
 ln -s ~/dotfiles/fish/user_functions ~/.config/fish/functions
