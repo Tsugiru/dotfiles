@@ -59,6 +59,14 @@ cd nerd-fonts
 cd ..
 rm -rf nerd-fonts
 
+# install fortune
+switch (uname)
+  case Linux
+    sudo apt -y install fortune
+  case Darwin
+    brew install fortune
+end
+
 # symlink kitty config
 switch (uname)
   case Linux

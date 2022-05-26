@@ -34,7 +34,7 @@ M.setup = function()
     virtual_text = false,
     underline = true
   })
--- I normally find that the floating window clashes a bit with the autocomplete popup window, so I have disabled it, I check errors with ]d and [d instead.
+--  I normally find that the floating window clashes a bit with the autocomplete popup window, so I have disabled it, I check errors with ]d and [d instead.
 --  vim.o.updatetime = 250
 --  vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 

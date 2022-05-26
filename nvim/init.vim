@@ -13,6 +13,8 @@ colorscheme tokyonight
 set cursorline
 set pumheight=10
 set autoread
+set incsearch
+set hlsearch
 autocmd FocusGained * checktime
 
 """"" line numbers """""
@@ -38,7 +40,6 @@ noremap <leader>- ddp
 " exit insert
 inoremap jj <esc>
 inoremap JJ <esc>
-inoremap <esc> <nop>
 
 " uppercase current word
 inoremap <c-u> <esc>lviwUi
