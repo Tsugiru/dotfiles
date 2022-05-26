@@ -1,15 +1,8 @@
-set fish_shell_path_macos /opt/homebrew/bin/fish
-set fish_shell_path_linux /usr/bin/fish
+set fish_shell_path (which fish)
 
 # set default shell to fish
-switch (uname)
-  case Linux
-    echo $fish_shell_path_linux | sudo tee -a /etc/shells
-    chsh -s $fish_shell_path_linux
-  case Darwin
-    echo $fish_shell_path_macos | sudo tee -a /etc/shells
-    chsh -s $fish_shell_path_macos
-end
+echo $fish_shell_path | sudo tee -a /etc/shells
+chsh -s $fish_shell_path
 
 # install fisher, the fish package manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
