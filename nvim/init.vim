@@ -40,6 +40,7 @@ noremap <leader>- ddp
 " exit insert
 inoremap jj <esc>
 inoremap JJ <esc>
+inoremap <esc> <nop>
 
 " uppercase current word
 inoremap <c-u> <esc>lviwUi
