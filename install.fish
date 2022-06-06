@@ -63,6 +63,7 @@ rm -rf nerd-fonts
 switch (uname)
   case Linux
     sudo apt -y install fortune
+    ln -s /usr/games/fortune ~/.local/bin
   case Darwin
     brew install fortune
 end
