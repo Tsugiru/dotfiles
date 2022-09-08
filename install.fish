@@ -59,10 +59,13 @@ cd nerd-fonts
 cd ..
 rm -rf nerd-fonts
 
+# below, remove symlinks if they are already present
+
 # install fortune
 switch (uname)
   case Linux
     sudo apt -y install fortune
+    rm ~/.local/bin/fortune
     ln -s /usr/games/fortune ~/.local/bin
   case Darwin
     brew install fortune
@@ -71,23 +74,36 @@ end
 # symlink kitty config
 switch (uname)
   case Linux
-    ln -s ~/dotfiles/kitty/kitty_linux.conf ~/.config/kitty/kitty.conf
+    rm ~/.config/kitty/kitty.conf
+    ln -s (pwd)/kitty/kitty_linux.conf ~/.config/kitty/kitty.conf
   case Darwin
-    ln -s ~/dotfiles/kitty/kitty_macos.conf ~/.config/kitty/kitty.conf
+    rm ~/.config/kitty/kitty.conf
+    ln -s (pwd)/kitty/kitty_macos.conf ~/.config/kitty/kitty.conf
 end
 
 # symlink nvim config files
 mkdir -p ~/.config/nvim/lua/plugins
-ln -s ~/dotfiles/nvim/init.vim ~/.config/nvim/init.vim
-ln -s ~/dotfiles/nvim/lua/plugins/init.lua ~/.config/nvim/lua/plugins/init.lua
-ln -s ~/dotfiles/nvim/lua/plugins/lspconfig.lua ~/.config/nvim/lua/plugins/lspconfig.lua
-ln -s ~/dotfiles/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/diffviewconfig.lua
+
+rm ~/.config/nvim/init.vim
+rm ~/.config/nvim/lua/plugins/init.lua
+rm ~/.config/nvim/lua/plugins/lspconfig.lua
+rm ~/.config/nvim/lua/plugins/diffviewconfig.lua
+
+ln -s (pwd)/nvim/init.vim ~/.config/nvim/init.vim
+ln -s (pwd)/nvim/lua/plugins/init.lua ~/.config/nvim/lua/plugins/init.lua
+ln -s (pwd)/nvim/lua/plugins/lspconfig.lua ~/.config/nvim/lua/plugins/lspconfig.lua
+ln -s (pwd)/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/diffviewconfig.lua
 
 # symlink fish config files
 set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
-ln -s ~/dotfiles/fish/colors ~/.config/fish
-ln -s ~/dotfiles/fish/user_functions ~/.config/fish/functions
+
+rm  -rf ~/.config/fish/colors
+rm -rf ~/.config/fish/functions/user_functions
+
+ln -s (pwd)/fish/colors ~/.config/fish
+ln -s (pwd)/fish/user_functions ~/.config/fish/functions
 
 # symlink tmux config file
-ln -s ~/dotfiles/.tmux.conf ~/.tmux.conf
+rm ~/.tmux.conf
+ln -s (pwd)/.tmux.conf ~/.tmux.conf
 

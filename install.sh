@@ -3,7 +3,7 @@
 # check the OS
 platform='unknown'
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    sudo apt -y install git
+    sudo apt -y install curl
     platform='linux' 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     platform='mac' 
@@ -37,10 +37,11 @@ fi
 # install tmux
 if [ $platform == "linux" ]; then
     sudo apt -y install autoconf automake pkg-config
+    sudo apt -y install libevent-dev ncurses-dev build-essential bison pkg-config
     git clone https://github.com/tmux/tmux.git
     cd tmux
     sh autogen.sh
-    ./configure && make
+    ./configure && make && make install
     cd ..
     rm -rf tmux/
 elif [ $platform == "mac" ]; then
