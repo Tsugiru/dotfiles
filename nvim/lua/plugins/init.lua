@@ -21,7 +21,7 @@ require('packer').startup(function(use)
 
   use 'folke/tokyonight.nvim'
 
-  use {'junegunn/fzf', dir = '~/.fzf', run = './install --all' }
+  use { "junegunn/fzf", run = ":call fzf#install()" }
   use {'junegunn/fzf.vim'}
 
   use {
