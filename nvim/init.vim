@@ -28,6 +28,8 @@ set expandtab
 set shiftwidth=4
 set smarttab
 
+autocmd FileType lua set sw=2
+
 """"" mappings """"""
 let mapleader=" "
 let maplocalleader=","
