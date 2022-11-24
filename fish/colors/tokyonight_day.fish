@@ -1,0 +1,39 @@
+ # TokyoNight Day Color Palette
+    set -l foreground 3760bf
+    set -l selection 99a7df
+    set -l comment 848cb5
+    set -l red f52a65
+    set -l orange b15c00
+    set -l yellow 8c6c3e
+    set -l green 587539
+    set -l purple 7847bd
+    set -l cyan 007197
+    set -l pink 9854f1
+
+    # Syntax Highlighting Colors
+    set -Ux fish_color_normal $foreground
+    set -Ux fish_color_command $cyan
+    set -Ux fish_color_keyword $pink
+    set -Ux fish_color_quote $yellow
+    set -Ux fish_color_redirection $foreground
+    set -Ux fish_color_end $orange
+    set -Ux fish_color_error $red
+    set -Ux fish_color_param $purple
+    set -Ux fish_color_comment $comment
+    set -Ux fish_color_selection --background=$selection
+    set -Ux fish_color_search_match --background=$selection
+    set -Ux fish_color_operator $green
+    set -Ux fish_color_escape $pink
+    set -Ux fish_color_autosuggestion $comment
+    set -Ux fish_color_user $green
+    set -Ux fish_color_host $green
+    set -Ux fish_color_host_remote $red
+    set -Ux fish_color_cancel $red
+    set -Ux fish_color_cwd $green
+
+    # Completion Pager Colors
+    set -Ux fish_pager_color_progress $comment
+    set -Ux fish_pager_color_prefix $cyan
+    set -Ux fish_pager_color_completion $foreground
+    set -Ux fish_pager_color_description $comment
+    set -Ux fish_pager_color_selected_background --background=$selection
