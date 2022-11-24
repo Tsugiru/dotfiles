@@ -78,6 +78,7 @@ switch (uname)
     rm ~/.config/kitty/kitty.conf
     ln -s (pwd)/kitty/kitty_macos.conf ~/.config/kitty/kitty.conf
 end
+ln -s (pwd)/kitty/themes ~/.config/kitty/themes
 
 # symlink nvim config files
 rm -rf ~/.config/nvim
@@ -96,3 +97,5 @@ ln -s (pwd)/fish/user_functions ~/.config/fish/functions
 rm ~/.tmux.conf
 ln -s (pwd)/.tmux.conf ~/.tmux.conf
 
+# set colorscheme (default dark) for applications
+lord dark

@@ -7,7 +7,7 @@ return {
 
     treesitter.setup({
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python' },
+      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'fish' },
 
       highlight = { enable = true },
 
