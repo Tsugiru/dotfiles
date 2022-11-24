@@ -1,4 +1,4 @@
-:lua require("plugins")
+:lua require('plugins')
 
 set completeopt=menu,menuone,noselect
 
@@ -8,8 +8,7 @@ syntax on
 
 """"" look """""
 set termguicolors
-let g:tokyonight_style = "night"
-colorscheme tokyonight
+colorscheme tokyonight-night
 set cursorline
 set pumheight=10
 set autoread

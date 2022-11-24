@@ -7,14 +7,12 @@ chsh -s $fish_shell_path
 # install fisher, the fish package manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 
-# install neovim and clangd
+# install neovim
 switch (uname)
   case Linux
     sudo apt -y install neovim
-    sudo apt -y install clangd-12
   case Darwin
     brew install neovim
-    brew install llvm
 end
 
 # set neovim as default editor
@@ -82,25 +80,16 @@ switch (uname)
 end
 
 # symlink nvim config files
-mkdir -p ~/.config/nvim/lua/plugins
-
-rm ~/.config/nvim/init.vim
-rm ~/.config/nvim/lua/plugins/init.lua
-rm ~/.config/nvim/lua/plugins/lspconfig.lua
-rm ~/.config/nvim/lua/plugins/diffviewconfig.lua
-
-ln -s (pwd)/nvim/init.vim ~/.config/nvim/init.vim
-ln -s (pwd)/nvim/lua/plugins/init.lua ~/.config/nvim/lua/plugins/init.lua
-ln -s (pwd)/nvim/lua/plugins/lspconfig.lua ~/.config/nvim/lua/plugins/lspconfig.lua
-ln -s (pwd)/nvim/lua/plugins/diffviewconfig.lua ~/.config/nvim/lua/plugins/diffviewconfig.lua
+rm -rf ~/.config/nvim
+ln -s (pwd)/nvim ~/.config/nvim
 
 # symlink fish config files
 set -U fish_function_path ~/.config/fish/functions/user_functions $fish_function_path
 
-rm  -rf ~/.config/fish/colors
-rm -rf ~/.config/fish/functions/user_functions
-
+rm -rf ~/.config/fish/colors
 ln -s (pwd)/fish/colors ~/.config/fish
+
+rm -rf ~/.config/fish/functions/user_functions
 ln -s (pwd)/fish/user_functions ~/.config/fish/functions
 
 # symlink tmux config file
