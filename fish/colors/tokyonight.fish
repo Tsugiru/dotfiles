@@ -25,6 +25,11 @@
     set -Ux fish_color_operator $green
     set -Ux fish_color_escape $pink
     set -Ux fish_color_autosuggestion $comment
+    set -Ux fish_color_user $green
+    set -Ux fish_color_host $green
+    set -Ux fish_color_host_remote $red
+    set -Ux fish_color_cancel $red
+    set -Ux fish_color_cwd $green
     
     # Completion Pager Colors
     set -Ux fish_pager_color_progress $comment
