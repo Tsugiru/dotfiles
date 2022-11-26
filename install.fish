@@ -97,5 +97,9 @@ ln -s (pwd)/fish/user_functions ~/.config/fish/functions
 rm ~/.tmux.conf
 ln -s (pwd)/.tmux.conf ~/.tmux.conf
 
+# set the fish color scheme to follow terminal colors
+setscheme
+# set bat program color theme
+set -Ux BAT_THEME base16
 # set colorscheme (default dark) for applications
 lord dark

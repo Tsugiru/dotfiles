@@ -1,4 +1,5 @@
 :lua require('plugins')
+:lua require('color_change_watcher')
 
 set completeopt=menu,menuone,noselect
 
@@ -8,7 +9,6 @@ syntax on
 
 """"" look """""
 set termguicolors
-silent! exe 'colorscheme tokyonight-'.$COLOR_VARIANT
 set cursorline
 set pumheight=10
 set autoread
