@@ -45,7 +45,7 @@ fisher install PatrickF1/fzf.fish
 
 # set FZF_DEFAULT_COMMAND and show hidden files on ctrl + alt + f
 set -U -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git -f -g \"\""
-set -U -x fzf_fd_opts --hidden --exclude=.git
+set -U -x fzf_fd_opts --hidden --exclude=.git --color=never
 
 # install z directory jumping tool
 fisher install jethrokuan/z
