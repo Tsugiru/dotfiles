@@ -19,6 +19,10 @@ end
 set -U -x EDITOR nvim
 set -U -x VISUAL nvim
 
+# install osc52 escape sequence script
+sudo cp yank /bin
+sudo chmod 777 /bin/yank
+
 # install ag
 switch (uname)
   case Linux
