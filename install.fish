@@ -2,7 +2,7 @@ set fish_shell_path (which fish)
 
 # set default shell to fish
 echo $fish_shell_path | sudo tee -a /etc/shells
-chsh -s $fish_shell_path
+sudo chsh -s $fish_shell_path
 
 # install fisher, the fish package manager
 curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
@@ -38,6 +38,7 @@ switch (uname)
     sudo apt -y install fd-find
     sudo apt -y install bat
     mkdir -p ~/.local/bin
+    fish_add_path ~/.local/bin
     ln -s $(which fdfind) ~/.local/bin/fd
     ln -s /usr/bin/batcat ~/.local/bin/bat
   case Darwin
