@@ -11,11 +11,21 @@ if not lspconfig_status_ok then
   return
 end
 
-for _, server in pairs(servers) do
+function get_opts(server)
   local opts = {
     on_attach = require("plugins.config.lsp.handlers").on_attach,
     capabilities = require("plugins.config.lsp.handlers").capabilities,
   }
+
+  if server == 'clangd' then
+    opts.cmd = { "/usr/bin/clangd", }
+  end
+
+  return opts
+end
+
+for _, server in pairs(servers) do
+  local opts = get_opts(server)
 
   server = vim.split(server, "@")[1]
 
