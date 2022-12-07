@@ -1,7 +1,9 @@
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  local opts = { noremap=true, silent=true }
+
+  local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -48,10 +50,32 @@ M.setup = function()
   local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   for _, lsp in ipairs(servers) do
-    require('lspconfig')[lsp].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-    }
+    if lsp == "sumneko_lua" then
+      local settings = {
+        Lua = {
+          runtime = {
+            version = "LuaJIT",
+          },
+          diagnostics = {
+            globals = { "vim", "love" },
+            disable = { "lowercase-global" }
+          },
+          completion = {
+            callSnippet = "Both"
+          }
+        }
+      }
+      require('lspconfig')[lsp].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = settings
+      })
+    else
+      require('lspconfig')[lsp].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+    end
   end
 
   local cmp = require 'cmp'
@@ -102,12 +126,12 @@ M.setup = function()
   })
 
   -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-    cmp.setup.cmdline({ '/', '?' }, {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = 'buffer' }
-      }
-    })
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
 
   -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
   cmp.setup.cmdline(':', {
