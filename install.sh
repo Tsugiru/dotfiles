@@ -27,10 +27,15 @@ fi
 
 # install fish
 if [ $platform == "linux" ]; then
-    sudo apt -y install software-properties-common
-    sudo add-apt-repository ppa:fish-shell/release-3
-    sudo apt update
-    sudo apt -y install fish
+    git clone https://github.com/fish-shell/fish-shell
+    cd fish-shell
+    mkdir build; cd build
+    cmake ..
+    make
+    sudo make install
+    sudo cp fish /usr/bin
+    cd ../..
+    rm -rf fish-shell
 elif [ $platform == "mac" ]; then
     brew install fish
 fi
@@ -42,7 +47,7 @@ if [ $platform == "linux" ]; then
     git clone https://github.com/tmux/tmux.git
     cd tmux
     sh autogen.sh
-    ./configure && make && make install
+    sudo ./configure && sudo make && sudo make install
     cd ..
     rm -rf tmux/
 elif [ $platform == "mac" ]; then

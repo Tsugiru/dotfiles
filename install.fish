@@ -10,7 +10,15 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 # install neovim
 switch (uname)
   case Linux
-    sudo apt -y install neovim
+    sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+    git clone https://github.com/neovim/neovim
+    cd neovim
+    rm -r build/  # clear the CMake cache
+    make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
+    make install
+    fish_add_path ~/neovim/bin
+    cd ..
+    rm -rf neovim
   case Darwin
     brew install neovim
 end
@@ -39,7 +47,7 @@ switch (uname)
     sudo apt -y install bat
     mkdir -p ~/.local/bin
     fish_add_path ~/.local/bin
-    ln -s $(which fdfind) ~/.local/bin/fd
+    ln -s (which fdfind) ~/.local/bin/fd
     ln -s /usr/bin/batcat ~/.local/bin/bat
   case Darwin
     brew install fzf

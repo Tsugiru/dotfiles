@@ -5,6 +5,12 @@ if fn.empty(fn.glob(install_path)) > 0 then
     install_path })
 end
 
+-- Use a protected call so we don't error out on first use
+local status_ok, packer = pcall(require, "packer")
+if not status_ok then
+	return
+end
+
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
 
