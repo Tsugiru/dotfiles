@@ -1,5 +1,5 @@
 local colorFile = vim.fn.expand('~/.vimrc.color')
-local function reload() 
+local function reload()
 	vim.cmd("source ".. colorFile)
 end
 

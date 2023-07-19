@@ -9,7 +9,16 @@ return {
       -- Add languages to be installed here that you want installed for treesitter
       ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'fish', 'javascript', 'typescript', },
 
+      autopairs = {
+        enable = true,
+      },
+
       highlight = { enable = true },
+
+      context_commentstring = {
+        enable = true,
+        enable_autocmd = false,
+      },
 
       incremental_selection = {
         enable = true,

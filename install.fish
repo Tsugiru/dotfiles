@@ -42,13 +42,12 @@ end
 # install fzf
 switch (uname)
   case Linux
-    sudo apt -y install fzf
-    sudo apt -y install fd-find
-    sudo apt -y install bat
-    mkdir -p ~/.local/bin
-    fish_add_path ~/.local/bin
-    ln -s (which fdfind) ~/.local/bin/fd
-    ln -s /usr/bin/batcat ~/.local/bin/bat
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
+    curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
+    fish_add_path ~/.cargo/bin/
+    cargo install fd-find
+    cargo install --locked bat
   case Darwin
     brew install fzf
     brew install fd

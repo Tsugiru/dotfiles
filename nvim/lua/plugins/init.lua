@@ -1,75 +1,110 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+  packer_bootstrap = fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim",
     install_path })
 end
 
--- Use a protected call so we don't error out on first use
+-- Use a protected call so we don"t error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
-	return
+  return
 end
 
-require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim' -- Package manager
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost init.lua source <afile> | PackerSync
+  augroup end
+]]
 
-  use 'tpope/vim-fugitive' -- Git commands in nvim
+packer.startup(function(use)
+  use "wbthomason/packer.nvim" -- Package manager
+
+  use "tpope/vim-fugitive"
 
   use {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
     config = function()
-      require('plugins.config.treesitter').setup()
+      require("plugins.config.treesitter").setup()
     end,
     run = function()
-      require('plugins.config.treesitter').update()
+      require("plugins.config.treesitter").update()
     end,
+    requires = { "JoosepAlviste/nvim-ts-context-commentstring" }
   }
 
   use {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     config = function()
-      require('plugins.config.lspconfig').setup()
+      require("plugins.config.lsp")
     end,
     requires = {
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
     }
   }
 
   use {
-    'hrsh7th/nvim-cmp',
+    "hrsh7th/nvim-cmp",
+    config = function()
+      require("plugins.config.cmp")
+    end,
     requires = {
-      'L3MON4D3/LuaSnip'
-    },
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "rafamadriz/friendly-snippets",
+    }
   }
 
-  use 'hrsh7th/cmp-nvim-lsp'
+  use "hrsh7th/cmp-nvim-lsp"
 
-  use 'hrsh7th/cmp-buffer'
+  use "hrsh7th/cmp-buffer"
 
-  use 'hrsh7th/cmp-path'
+  use "hrsh7th/cmp-path"
 
-  use 'hrsh7th/cmp-cmdline'
+  use "hrsh7th/cmp-cmdline"
 
-  use 'saadparwaiz1/cmp_luasnip'
-
-  use 'folke/tokyonight.nvim'
+  use "folke/tokyonight.nvim"
 
   use { "junegunn/fzf", run = ":call fzf#install()" }
 
-  use { 'junegunn/fzf.vim' }
+  use "junegunn/fzf.vim"
+
+  use "RRethy/vim-illuminate"
 
   use {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
     config = function()
-      require('plugins.config.lualine')
+      require("plugins.config.lualine")
     end,
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+    requires = { "kyazdani42/nvim-web-devicons", opt = true }
+  }
+
+  use {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("plugins.config.autopairs")
+    end,
+  }
+
+  use {
+    "numToStr/Comment.nvim",
+    config = function()
+      require("plugins.config.comment")
+    end,
+    requires = { "JoosepAlviste/nvim-ts-context-commentstring" }
+  }
+
+  use { "lewis6991/gitsigns.nvim",
+    config = function()
+      require("plugins.config.gitsigns")
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if packer_bootstrap then
-    require('packer').sync()
+    require("packer").sync()
   end
 end)
