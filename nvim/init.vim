@@ -4,6 +4,10 @@
 
 set completeopt=menu,menuone,noselect
 
+" disable netrw
+:lua vim.g.loaded_netrw = 1
+:lua vim.g.loaded_netrwPlugin = 1
+
 """"" filetype """""
 filetype plugin indent on
 syntax on
@@ -64,9 +68,8 @@ nnoremap <leader>g :GFiles?<cr>
 " toggle between header/source
 nnoremap <leader>o :ClangdSwitchSourceHeader<cr>
 
-" open/close DiffView
-nnoremap <leader>do :DiffviewOpen<cr>
-nnoremap <leader>dc :DiffviewClose<cr>
+" toggle nvim-tree
+nnoremap <leader>x :NvimTreeToggle<cr>
 
 let g:fzf_colors =
 \ { 'fg':      ['fg', 'Normal'],

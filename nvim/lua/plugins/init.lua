@@ -97,10 +97,21 @@ packer.startup(function(use)
     requires = { "JoosepAlviste/nvim-ts-context-commentstring" }
   }
 
-  use { "lewis6991/gitsigns.nvim",
+  use {
+    "lewis6991/gitsigns.nvim",
     config = function()
       require("plugins.config.gitsigns")
     end
+  }
+
+  use {
+    'nvim-tree/nvim-tree.lua',
+    config = function()
+      require("plugins.config.nvimtree")
+    end,
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
