@@ -31,12 +31,12 @@ set -U -x VISUAL nvim
 sudo cp yank /bin
 sudo chmod 777 /bin/yank
 
-# install ag
+# install rg
 switch (uname)
   case Linux
-    sudo apt -y install silversearcher-ag
+    sudo apt -y install ripgrep
   case Darwin
-    brew install the_silver_searcher
+    brew install ripgrep
 end
 
 # install fzf
@@ -56,7 +56,7 @@ end
 fisher install PatrickF1/fzf.fish
 
 # set FZF_DEFAULT_COMMAND and show hidden files on ctrl + alt + f
-set -U -x FZF_DEFAULT_COMMAND "ag --hidden --ignore .git -f -g \"\""
+set -U -x FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
 set -U -x fzf_fd_opts --hidden --exclude=.git --color=never
 
 # install z directory jumping tool
