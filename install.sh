@@ -27,15 +27,17 @@ fi
 
 # install fish
 if [ $platform == "linux" ]; then
+    sudo apt install build-essential cmake ncurses-dev libncurses5-dev libpcre2-dev gettext libclang-dev
+    curl --proto '=https' --tlsv1.3 https://sh.rustup.rs -sSf | sh
+    source "$HOME/.cargo/env"
     git clone https://github.com/fish-shell/fish-shell
     cd fish-shell
     mkdir build; cd build
     cmake ..
-    make
+    sudo make
     sudo make install
-    sudo cp fish /usr/bin
     cd ../..
-    rm -rf fish-shell
+    sudo rm -rf fish-shell
 elif [ $platform == "mac" ]; then
     brew install fish
 fi
@@ -49,7 +51,7 @@ if [ $platform == "linux" ]; then
     sh autogen.sh
     sudo ./configure && sudo make && sudo make install
     cd ..
-    rm -rf tmux/
+    sudo rm -rf tmux/
 elif [ $platform == "mac" ]; then
     brew install tmux
 fi

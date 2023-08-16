@@ -10,15 +10,14 @@ curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
 # install neovim
 switch (uname)
   case Linux
-    sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+    sudo apt -y install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
     git clone https://github.com/neovim/neovim
     cd neovim
+    git checkout stable
     rm -r build/  # clear the CMake cache
-    make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim"
-    make install
+    sudo make CMAKE_BUILD_TYPE=Release
+    sudo make CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=$HOME/neovim" install
     fish_add_path ~/neovim/bin
-    cd ..
-    rm -rf neovim
   case Darwin
     brew install neovim
 end
@@ -54,6 +53,7 @@ switch (uname)
     brew install bat
 end
 fisher install PatrickF1/fzf.fish
+fzf_configure_bindings
 
 # set FZF_DEFAULT_COMMAND and show hidden files on ctrl + alt + f
 set -U -x FZF_DEFAULT_COMMAND "rg --files --hidden --follow --glob '!.git'"
