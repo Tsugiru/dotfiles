@@ -72,7 +72,12 @@ packer.startup(function(use)
 
   use "junegunn/fzf.vim"
 
-  use "RRethy/vim-illuminate"
+  use {
+    "RRethy/vim-illuminate",
+    config = function()
+      require("plugins.config.illuminate")
+    end
+  }
 
   use {
     "nvim-lualine/lualine.nvim",
@@ -104,14 +109,13 @@ packer.startup(function(use)
     end
   }
 
+  use 'nvim-tree/nvim-web-devicons'
+
   use {
     'nvim-tree/nvim-tree.lua',
     config = function()
       require("plugins.config.nvimtree")
-    end,
-    requires = {
-      'nvim-tree/nvim-web-devicons', -- optional
-    },
+    end
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
