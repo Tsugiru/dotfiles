@@ -19,7 +19,7 @@ set pumheight=10
 set autoread
 set incsearch
 set hlsearch
-autocmd FocusGained * checktime
+autocmd FocusGained,BufEnter * checktime
 
 """"" line numbers """""
 set relativenumber

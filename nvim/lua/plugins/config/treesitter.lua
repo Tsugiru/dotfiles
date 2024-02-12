@@ -1,5 +1,6 @@
 return {
   setup = function()
+    vim.g.skip_ts_context_commentstring_module = true
     local status, treesitter = pcall(require, 'nvim-treesitter.configs')
     if not status then
       return
