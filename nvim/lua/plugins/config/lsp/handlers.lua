@@ -2,7 +2,7 @@ local M = {}
 
 local status_cmp_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_cmp_ok then
-	return
+  return
 end
 
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -11,28 +11,28 @@ M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
 M.setup = function()
   local config = {
-          virtual_text = false, -- disable virtual text
-          update_in_insert = true,
-          underline = true,
-          severity_sort = true,
-          float = {
-                  focusable = true,
-                  style = "minimal",
-                  border = "rounded",
-                  source = "always",
-                  header = "",
-                  prefix = "",
-          },
+    virtual_text = false, -- disable virtual text
+    update_in_insert = true,
+    underline = true,
+    severity_sort = true,
+    float = {
+      focusable = true,
+      style = "minimal",
+      border = "rounded",
+      source = "always",
+      header = "",
+      prefix = "",
+    },
   }
 
   vim.diagnostic.config(config)
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-          border = "rounded",
+    border = "rounded",
   })
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-          border = "rounded",
+    border = "rounded",
   })
 end
 
@@ -60,7 +60,7 @@ function M.on_attach(client, bufnr)
   lsp_keymaps(bufnr)
   local status_ok, illuminate = pcall(require, "illuminate")
   if not status_ok then
-          return
+    return
   end
   illuminate.on_attach(client)
 end
