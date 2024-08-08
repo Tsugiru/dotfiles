@@ -7,18 +7,27 @@ return {
 
     treesitter.setup({
       -- Add languages to be installed here that you want installed for treesitter
-      ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'fish', 'javascript', 'typescript', },
+      ensure_installed = {
+        'c',
+        'cpp',
+        'go',
+        'lua',
+        'python',
+        'fish',
+        'javascript',
+        'typescript',
+        "vimdoc",
+        "luadoc",
+        "vim",
+        "lua",
+        "markdown"
+      },
 
       autopairs = {
         enable = true,
       },
 
       highlight = { enable = true },
-
-      context_commentstring = {
-        enable = true,
-        enable_autocmd = false,
-      },
 
       incremental_selection = {
         enable = true,
@@ -30,6 +39,13 @@ return {
         },
       },
     })
+
+    require('ts_context_commentstring').setup {
+      enable_autocmd = false,
+      languages = {
+        typescript = '// %s',
+      },
+    }
   end,
 
   update = function()
